@@ -1,5 +1,4 @@
 import { useRouter } from 'next/router';
-import Image from '@/components/ui/image';
 import AnchorLink from '@/components/ui/links/anchor-link';
 import { useIsMounted } from '@/lib/hooks/use-is-mounted';
 import { useIsDarkMode } from '@/lib/hooks/use-is-dark-mode';
@@ -30,13 +29,13 @@ export default function Logo() {
     >
       <span className="relative flex overflow-hidden">
         {isMounted && isDarkMode && (
-          <img src="/logo.png" alt="Criptic"  width={50} />
+          <img src="/logo.png" alt="Criptic" width={50} />
         )}
-        
+
         {isMounted && !isDarkMode && (
-          <img src="/logo.png" alt="Criptic"  width={50} />
+          <img src="/logo.png" alt="Criptic" width={50} />
         )}
-        <p className='ml-4 pt-3'>MIGMIG</p>
+        <p className="ml-4 pt-3">MIGMIG</p>
       </span>
     </AnchorLink>
   );

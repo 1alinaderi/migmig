@@ -1,8 +1,6 @@
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import CurrencySwapIcons from '@/components/ui/currency-swap-icons';
 import { CoinList } from '@/components/ui/currency-swap-icons';
-import TransactionInfo from '@/components/ui/transaction-info';
 
 interface FarmListTypes {
   from: string;
@@ -11,7 +9,7 @@ interface FarmListTypes {
   apr: string;
   liquidity: string;
   multiplier: string;
-  showImage:Number
+  showImage: Number;
 }
 
 export default function FarmList({
@@ -22,7 +20,7 @@ export default function FarmList({
   liquidity,
   multiplier,
   children,
-  showImage
+  showImage,
 }: React.PropsWithChildren<FarmListTypes>) {
   let [isExpand, setIsExpand] = useState(false);
   const setFrom = from as CoinList;

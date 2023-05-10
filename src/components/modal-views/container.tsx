@@ -9,23 +9,10 @@ import { Close } from '@/components/icons/close';
 import { useModal, MODAL_VIEW } from '@/components/modal-views/context';
 import { useLayout } from '@/lib/hooks/use-layout';
 import { LAYOUT_OPTIONS } from '@/lib/constants';
-import Followers from '@/components/profile/followers-view';
 // dynamic imports
-const SearchView = dynamic(() => import('@/components/search/view'));
-const ProfileInfo = dynamic(
-  () => import('@/components/profile/profile-info-view')
-);
 
 function renderModalContent(view: MODAL_VIEW | string) {
   switch (view) {
-    case 'SEARCH_VIEW':
-      return <SearchView />;
-    case 'PROFILE_INFO_VIEW':
-      return <ProfileInfo />;
-    case 'FOLLOWING_VIEW':
-      return <Followers />;
-    case 'FOLLOWERS_VIEW':
-      return <Followers />;
     default:
       return null;
   }

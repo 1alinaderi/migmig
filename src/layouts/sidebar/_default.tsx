@@ -1,5 +1,4 @@
 import cn from 'classnames';
-import AuthorCard from '@/components/ui/author-card';
 import Logo from '@/components/ui/logo';
 import { MenuItem } from '@/components/ui/collapsible-menu';
 import Scrollbar from '@/components/ui/scrollbar';

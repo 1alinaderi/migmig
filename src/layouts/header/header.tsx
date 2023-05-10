@@ -1,6 +1,5 @@
 import { useRouter } from 'next/router';
 import cn from 'classnames';
-import LogoIcon from '@/components/ui/logo-icon';
 import { useWindowScroll } from '@/lib/hooks/use-window-scroll';
 import { FlashIcon } from '@/components/icons/flash';
 import Hamburger from '@/components/ui/hamburger';
@@ -9,10 +8,9 @@ import SearchButton from '@/components/search/button';
 import { useIsMounted } from '@/lib/hooks/use-is-mounted';
 import { useDrawer } from '@/components/drawer-views/context';
 import routes from '@/config/routes';
-import { Web3Button } from '@web3modal/react'
+import { Web3Button } from '@web3modal/react';
 import { WalletContext } from '@/lib/hooks/use-connect';
-import { useContext } from "react"
-
+import { useContext } from 'react';
 
 // function NotificationButton() {
 //   return (
@@ -26,12 +24,12 @@ import { useContext } from "react"
 // }
 
 function HeaderRightArea() {
-  const { address } = useContext(WalletContext)
+  const { address } = useContext(WalletContext);
   return (
     <div className="relative order-last flex shrink-0 items-center gap-4 sm:gap-6 lg:gap-8">
       {/* <NotificationButton /> */}
       {/* <WalletConnect /> */}
-      <Web3Button  />
+      <Web3Button />
     </div>
   );
 }
@@ -53,12 +51,6 @@ export default function Header({ className }) {
     >
       <div className="flex h-full items-center justify-between px-4 sm:px-6 lg:px-8 3xl:px-10">
         <div className="flex items-center">
-          <div
-            onClick={() => router.push(routes.home)}
-            className="flex items-center xl:hidden"
-          >
-            <LogoIcon />
-          </div>
           <div className="mx-2 block sm:mx-4 xl:hidden">
             <Hamburger
               isOpen={false}

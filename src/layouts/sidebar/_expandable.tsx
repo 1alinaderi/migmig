@@ -2,9 +2,6 @@ import { useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 import cn from 'classnames';
-import AuthorCard from '@/components/ui/author-card';
-import Logo from '@/components/ui/logo';
-import LogoIcon from '@/components/ui/logo-icon';
 import { MenuItem } from '@/components/ui/collapsible-menu';
 import Scrollbar from '@/components/ui/scrollbar';
 import Button from '@/components/ui/button';
@@ -56,14 +53,6 @@ export default function Sidebar({ className }: { className?: string }) {
           open ? 'flex-start' : 'justify-center'
         )}
       >
-        {!open ? (
-          <div onClick={() => setOpen(!open)}>
-            <LogoIcon />
-          </div>
-        ) : (
-          <Logo />
-        )}
-
         <div className="md:hidden">
           <Button
             title="Close"
@@ -127,9 +116,7 @@ export default function Sidebar({ className }: { className?: string }) {
             onClick={() =>
               router.push({ pathname: routes.profile, query: { ...restQuery } })
             }
-          >
-            <AuthorCard image={AuthorImage} />
-          </motion.div>
+          ></motion.div>
         ) : (
           <div>
             <motion.div
@@ -146,13 +133,7 @@ export default function Sidebar({ className }: { className?: string }) {
                   query: { ...restQuery },
                 })
               }
-            >
-              {/* <AuthorCard
-                image={AuthorImage}
-                name="Cameron Williamson"
-                role="admin"
-              /> */}
-            </motion.div>
+            ></motion.div>
           </div>
         )}
       </div>

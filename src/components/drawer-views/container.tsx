@@ -6,15 +6,12 @@ import { Transition } from '@/components/ui/transition';
 import { DRAWER_VIEW, useDrawer } from '@/components/drawer-views/context';
 // dynamic imports
 const Sidebar = dynamic(() => import('@/layouts/sidebar/_default'));
-const DrawerFilters = dynamic(() => import('@/components/search/filters'));
 const DrawerMenu = dynamic(() => import('@/layouts/sidebar/_layout-menu'));
 
 function renderDrawerContent(view: DRAWER_VIEW | string) {
   switch (view) {
     case 'DASHBOARD_SIDEBAR':
       return <Sidebar />;
-    case 'DRAWER_SEARCH':
-      return <DrawerFilters />;
     default:
       return <DrawerMenu />;
   }

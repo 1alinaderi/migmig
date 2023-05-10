@@ -10,12 +10,16 @@ import SettingsButton from '@/components/settings/settings-button';
 import SettingsDrawer from '@/components/settings/settings-drawer';
 import { WalletProvider } from '@/lib/hooks/use-connect';
 import 'overlayscrollbars/overlayscrollbars.css';
-import { EthereumClient, w3mConnectors, w3mProvider ,  } from '@web3modal/ethereum'
-import { Web3Modal } from '@web3modal/react'
-import { configureChains, createClient, WagmiConfig } from 'wagmi'
-import { Web3Button } from '@web3modal/react'
-import { ToastContainer , toast  } from 'react-toastify';
-import { bsc } from 'wagmi/chains'
+import {
+  EthereumClient,
+  w3mConnectors,
+  w3mProvider,
+} from '@web3modal/ethereum';
+import { Web3Modal } from '@web3modal/react';
+import { configureChains, createClient, WagmiConfig } from 'wagmi';
+import { Web3Button } from '@web3modal/react';
+import { ToastContainer, toast } from 'react-toastify';
+import { bsc } from 'wagmi/chains';
 import 'react-toastify/dist/ReactToastify.css';
 // base css file
 import 'swiper/css';
@@ -24,9 +28,9 @@ import '@/assets/css/scrollbar.css';
 import '@/assets/css/globals.css';
 import '@/assets/css/range-slider.css';
 import { useState } from 'react';
-import { useEffect  } from 'react';
+import { useEffect } from 'react';
 import { WalletContext } from '@/lib/hooks/use-connect';
-import { useContext } from "react"
+import { useContext } from 'react';
 
 type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
@@ -42,19 +46,17 @@ type AppPropsWithLayout = AppProps & {
 function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
   //could remove this if you don't need to page level layout
   const getLayout = Component.getLayout ?? ((page) => page);
-  const projectId = "40d32fc2d453be44a687f19f10303cb9";
+  const projectId = '40d32fc2d453be44a687f19f10303cb9';
   const [queryClient] = useState(() => new QueryClient());
-  const chains = [bsc]
+  const chains = [bsc];
 
-
-  const { provider } = configureChains(chains, [w3mProvider({ projectId })])
+  const { provider } = configureChains(chains, [w3mProvider({ projectId })]);
   const wagmiClient = createClient({
-    autoConnect:true ,
-    connectors: w3mConnectors({ projectId, version: 1 , chains }),
-    provider
-  })
-  const ethereumClient = new EthereumClient(wagmiClient, chains)
-
+    autoConnect: true,
+    connectors: w3mConnectors({ projectId, version: 1, chains }),
+    provider,
+  });
+  const ethereumClient = new EthereumClient(wagmiClient, chains);
 
   return (
     <>
@@ -64,31 +66,30 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
           name="viewport"
           content="width=device-width, initial-scale=1 maximum-scale=1"
         />
-        <title>Criptic - React Next Web3 NFT Crypto Dashboard Template</title>
+        <title>MigMig</title>
+        <link rel="icon" href={'/logo.png'} />
       </Head>
-      <QueryClientProvider client={queryClient}>
-      <WagmiConfig client={wagmiClient}>
-        <ThemeProvider
-          attribute="class"
-          enableSystem={false}
-          defaultTheme="light"
-        >
-          <WalletProvider>
-        
-            {/* <div className={`${firaCode.variable} font-body`}> */}
-            {getLayout(<Component  {...pageProps} />)}
-            <SettingsButton />
-            <SettingsDrawer />
-            <ModalsContainer />
-            <DrawersContainer />
-            {/* </div> */}
-          </WalletProvider>
-        </ThemeProvider>
-        <ToastContainer position="top-center" />
-        <Web3Modal projectId={projectId} ethereumClient={ethereumClient}  />
-        </WagmiConfig>
-      </QueryClientProvider>
-      
+      <WalletProvider>
+        <QueryClientProvider client={queryClient}>
+          <WagmiConfig client={wagmiClient}>
+            <ThemeProvider
+              attribute="class"
+              enableSystem={false}
+              defaultTheme="light"
+            >
+              {/* <div className={`${firaCode.variable} font-body`}> */}
+              {getLayout(<Component {...pageProps} />)}
+              <SettingsButton />
+              <SettingsDrawer />
+              <ModalsContainer />
+              <DrawersContainer />
+              {/* </div> */}
+            </ThemeProvider>
+            <ToastContainer position="top-center" />
+            <Web3Modal projectId={projectId} ethereumClient={ethereumClient} />
+          </WagmiConfig>
+        </QueryClientProvider>
+      </WalletProvider>
     </>
   );
 }
