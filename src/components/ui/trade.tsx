@@ -13,7 +13,7 @@ import { useBreakpoint } from '@/lib/hooks/use-breakpoint';
 import { useIsMounted } from '@/lib/hooks/use-is-mounted';
 import { fadeInBottom } from '@/lib/framer-motion/fade-in-bottom';
 // dynamic import
-import { Web3Button } from '@web3modal/react'
+import { Web3Button } from '@web3modal/react';
 
 const Listbox = dynamic(() => import('@/components/ui/list-box'));
 
@@ -33,7 +33,7 @@ function ActiveNavLink({ href, title, isActive, className }: any) {
     <ActiveLink
       href={{ pathname: href, query: restQuery }}
       className={cn(
-        'relative z-[1] inline-flex items-center py-1.5 px-3',
+        'relative z-[1] inline-flex items-center px-3 py-1.5',
         className
       )}
       activeClassName="font-medium text-white"
@@ -41,7 +41,7 @@ function ActiveNavLink({ href, title, isActive, className }: any) {
       <span>{title}</span>
       {isActive && (
         <motion.span
-          className="absolute left-0 right-0 bottom-0 -z-[1] h-full w-full rounded-lg bg-brand shadow-large"
+          className="absolute bottom-0 left-0 right-0 -z-[1] h-full w-full rounded-lg bg-brand shadow-large"
           layoutId="activeNavLinkIndicator"
         />
       )}
@@ -75,13 +75,6 @@ export default function Trade({ children }: React.PropsWithChildren<{}>) {
               onSelect={(path) => handleRouteOnSelect(path)}
               className="w-full"
             >
-              <AnchorLink
-                href={routes.charts}
-                className="inline-flex items-center justify-between gap-1.5 rounded-md px-3 py-2 text-gray-900 hover:bg-gray-100 dark:text-gray-100 dark:hover:bg-gray-700/70"
-              >
-                Charts
-                <ExportIcon className="h-auto w-2.5" />
-              </AnchorLink>
               <button className="inline-flex items-center justify-between gap-1.5 rounded-md px-3 py-2 uppercase text-gray-900 hover:bg-gray-100 dark:text-gray-100 dark:hover:bg-gray-700/70">
                 Settings
                 <RangeIcon className="h-auto w-3" />
