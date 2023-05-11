@@ -59,10 +59,6 @@ export default function Header({ className }) {
               className="dark:text-white"
             />
           </div>
-          <SearchButton
-            variant="transparent"
-            className="ltr:-ml-[17px] rtl:-mr-[17px] dark:text-white"
-          />
         </div>
         <HeaderRightArea />
       </div>

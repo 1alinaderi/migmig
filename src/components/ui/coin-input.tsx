@@ -53,8 +53,21 @@ export default function CoinInput({
       >
         <div className="min-w-[80px] border-r border-gray-200 p-3 transition-colors duration-200 group-hover:border-gray-900 dark:border-gray-700 dark:group-hover:border-gray-600">
           <button className="flex items-center font-medium outline-none dark:text-gray-100">
-            <img style={{ maxWidth: '28px' }} src="/BNB.png" />
-            <span className="ltr:ml-2 rtl:mr-2">BNB </span>
+            <img
+              style={{ maxWidth: '28px' }}
+              src={label === 'MIGMIG' ? '/logo.png' : '/BNB.png'}
+            />
+            <span className="ltr:ml-2 rtl:mr-2">
+              {label === 'MIGMIG' ? (
+                <>
+                  MIG
+                  <br />
+                  MIG
+                </>
+              ) : (
+                label
+              )}{' '}
+            </span>
           </button>
         </div>
         <div className="flex flex-1 flex-col text-right">

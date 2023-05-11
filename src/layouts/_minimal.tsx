@@ -10,8 +10,7 @@ import { useBreakpoint } from '@/lib/hooks/use-breakpoint';
 import { useDrawer } from '@/components/drawer-views/context';
 import { useWindowScroll } from '@/lib/hooks/use-window-scroll';
 import routes from '@/config/routes';
-import { Web3Button } from '@web3modal/react'
-
+import { Web3Button } from '@web3modal/react';
 
 // function NotificationButton() {
 //   return (
@@ -30,19 +29,9 @@ function HeaderRightArea() {
   const { openDrawer, isOpen } = useDrawer();
   return (
     <div className="order-last flex shrink-0 items-center">
-      <div className="ltr:mr-3.5 rtl:ml-3.5 ltr:sm:mr-5 rtl:sm:ml-5 xl:hidden">
-        <SearchButton
-          color="white"
-          className="shadow-main dark:border dark:border-solid dark:border-gray-700 dark:bg-light-dark dark:text-white"
-        />
-      </div>
+      <div className="ltr:mr-3.5 rtl:ml-3.5 ltr:sm:mr-5 rtl:sm:ml-5 xl:hidden"></div>
 
       <div className="hidden gap-6 lg:flex 2xl:gap-8">
-        {isMounted && ['xs', 'sm', 'md', 'lg'].indexOf(breakpoint) == -1 && (
-          <div>
-            <SearchButton variant="transparent" className="dark:text-white" />
-          </div>
-        )}
         {/* <NotificationButton /> */}
         {/* <WalletConnect /> */}
         <Web3Button />

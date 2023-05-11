@@ -25,7 +25,7 @@ export default function Logo() {
             },
           }),
       }}
-      className="flex w-28 outline-none sm:w-32 4xl:w-36"
+      className="flex w-36 outline-none sm:w-32 4xl:w-36"
     >
       <span className="relative flex overflow-hidden">
         {isMounted && isDarkMode && (

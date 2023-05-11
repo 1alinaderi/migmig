@@ -27,7 +27,7 @@ const LiquidityPositionPage: NextPageWithLayout = () => {
               className="flex h-16 w-full cursor-pointer items-center justify-between p-3"
               onClick={() => setIsExpand(!isExpand)}
             >
-              <CurrencySwapIcons from="BTC" to="ETH" />
+              <CurrencySwapIcons from="MIGMIG" to="BNB" />
 
               <span className="flex items-center text-sm text-gray-500 dark:text-gray-300">
                 Manage
@@ -55,17 +55,14 @@ const LiquidityPositionPage: NextPageWithLayout = () => {
                     <div className="flex flex-col gap-3 xs:gap-[18px]">
                       <TransactionInfo
                         label="YOUR TOTAL POOL TOKEN:"
-                        value="22.51"
+                        value="0"
                       />
                       <TransactionInfo
-                        label="POOLED BTC:"
-                        value="0.01940272 BTC"
+                        label="POOLED MIGMIG:"
+                        value="0 MIGMIG"
                       />
-                      <TransactionInfo
-                        label="POOLED ETH:"
-                        value="0.14689574 ETH"
-                      />
-                      <TransactionInfo label="YOUR POOL SHARE:" value="0.06%" />
+                      <TransactionInfo label="POOLED BNB:" value="0 BNB" />
+                      <TransactionInfo label="YOUR POOL SHARE:" value="0%" />
                     </div>
                     <Button
                       size="large"

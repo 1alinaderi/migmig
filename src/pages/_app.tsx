@@ -46,7 +46,7 @@ type AppPropsWithLayout = AppProps & {
 function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
   //could remove this if you don't need to page level layout
   const getLayout = Component.getLayout ?? ((page) => page);
-  const projectId = '40d32fc2d453be44a687f19f10303cb9';
+  const projectId = '2394c0eb2a66dd5e1eb4990b22d6502a';
   const [queryClient] = useState(() => new QueryClient());
   const chains = [bsc];
 
@@ -69,27 +69,25 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
         <title>MigMig</title>
         <link rel="icon" href={'/logo.png'} />
       </Head>
-      <WalletProvider>
-        <QueryClientProvider client={queryClient}>
+      <QueryClientProvider client={queryClient}>
+        <ThemeProvider
+          attribute="class"
+          enableSystem={false}
+          defaultTheme="light"
+        >
           <WagmiConfig client={wagmiClient}>
-            <ThemeProvider
-              attribute="class"
-              enableSystem={false}
-              defaultTheme="light"
-            >
-              {/* <div className={`${firaCode.variable} font-body`}> */}
-              {getLayout(<Component {...pageProps} />)}
-              <SettingsButton />
-              <SettingsDrawer />
-              <ModalsContainer />
-              <DrawersContainer />
-              {/* </div> */}
-            </ThemeProvider>
-            <ToastContainer position="top-center" />
-            <Web3Modal projectId={projectId} ethereumClient={ethereumClient} />
+            {/* <div className={`${firaCode.variable} font-body`}> */}
+            {getLayout(<Component {...pageProps} />)}
+            <SettingsButton />
+            <SettingsDrawer />
+            <ModalsContainer />
+            <DrawersContainer />
+            {/* </div> */}
           </WagmiConfig>
-        </QueryClientProvider>
-      </WalletProvider>
+        </ThemeProvider>
+        <Web3Modal projectId={projectId} ethereumClient={ethereumClient} />
+        <ToastContainer position="top-center" />
+      </QueryClientProvider>
     </>
   );
 }
