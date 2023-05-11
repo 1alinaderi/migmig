@@ -14,17 +14,17 @@ export const menuItems = [
   {
     name: 'Home',
     icon: <HomeIcon />,
-    href: "https://migmig.finance/",
-  },
-  {
-    name: 'Farm',
-    icon: <FarmIcon />,
-    href: routes.farms,
+    href: 'https://migmig.finance/',
   },
   {
     name: 'Swap',
     icon: <ExchangeIcon />,
     href: routes.swap,
+  },
+  {
+    name: 'Farm',
+    icon: <FarmIcon />,
+    href: routes.farms,
   },
   {
     name: 'Liquidity',
