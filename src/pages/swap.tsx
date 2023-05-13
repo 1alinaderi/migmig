@@ -39,6 +39,7 @@ const SwapPage: NextPageWithLayout = (props) => {
     AbiRouterContract,
     RouterAddress
   );
+  console.log(props);
 
   useEffect(() => {
     setaddress(ethereumClient?.getAccount()?.address);

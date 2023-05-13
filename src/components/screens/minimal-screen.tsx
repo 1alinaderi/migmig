@@ -16,7 +16,7 @@ const topPoolsLimit = (breakpoint: string) => {
   }
 };
 
-export default function MinimalScreen() {
+export default function MinimalScreen(props) {
   const [limit, setLimit] = useState(4);
   const breakpoint = useBreakpoint();
   useEffect(() => {
@@ -76,7 +76,7 @@ export default function MinimalScreen() {
           </div>
         </div>
       </div> */}
-      <SwapPage />
+      <SwapPage {...props} />
     </>
   );
 }

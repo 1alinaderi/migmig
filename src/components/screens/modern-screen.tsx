@@ -4,14 +4,14 @@ import { NextSeo } from 'next-seo';
 import AuthorImage from '@/assets/images/author.jpg';
 import SwapPage from '@/pages/swap';
 
-export default function ModernScreen() {
+export default function ModernScreen(props) {
   return (
     <>
       <NextSeo
         title="MIGMIG"
         description="MIGMIG - React Next Web3 NFT Crypto Dashboard Template"
       />
-      <SwapPage />
+      <SwapPage {...props} />
     </>
   );
 }

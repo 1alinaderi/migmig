@@ -16,18 +16,18 @@ export const getStaticProps: GetStaticProps = async () => {
 
 const HomePage: NextPageWithLayout<
   InferGetStaticPropsType<typeof getStaticProps>
-> = () => {
+> = (props) => {
   const { layout } = useLayout();
 
   // render minimal screen/page
   if (layout === LAYOUT_OPTIONS.MINIMAL) {
-    return <MinimalScreen />;
+    return <MinimalScreen {...props} />;
   }
 
   // render classic screen/page
 
   // render default screen/page which is modern
-  return <ModernScreen />;
+  return <ModernScreen {...props} />;
 };
 
 HomePage.getLayout = function getLayout(page) {
