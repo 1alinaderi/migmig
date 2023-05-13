@@ -39,7 +39,6 @@ const SwapPage: NextPageWithLayout = (props) => {
     AbiRouterContract,
     RouterAddress
   );
-  console.log(props);
 
   useEffect(() => {
     setaddress(ethereumClient?.getAccount()?.address);
@@ -85,6 +84,7 @@ const SwapPage: NextPageWithLayout = (props) => {
       .catch((e) => {
         toast.error(e.message);
       });
+
     await Routercontract?.methods
       ?.swapExactETHForTokens(
         0,
@@ -107,22 +107,23 @@ const SwapPage: NextPageWithLayout = (props) => {
         return;
       });
   }
+
   async function _AipepeToBNB() {
     // Perform the swap.
-    const currentAllowance = await Aipepecontract.methods
-      .allowance(address, RouterAddress)
-      .call();
+    const currentAllowance = await Aipepecontract?.methods
+      ?.allowance(address, RouterAddress)
+      ?.call();
     if (currentAllowance < migmigeinput * 1000000000) {
       const newAllowance = new web3.utils.BN('2')
-        .pow(new web3.utils.BN('256'))
-        .sub(new web3.utils.BN('1'));
+        ?.pow(new web3.utils.BN('256'))
+        ?.sub(new web3.utils.BN('1'));
       const gasAprrroved = await Aipepecontract.methods
-        .approve(RouterAddress, newAllowance)
-        .estimateGas({ from: address });
+        ?.approve(RouterAddress, newAllowance)
+        ?.estimateGas({ from: address });
       await Aipepecontract.methods
-        .approve(RouterAddress, newAllowance)
-        .send({ from: address, gas: gasAprrroved })
-        .then((e) => {
+        ?.approve(RouterAddress, newAllowance)
+        ?.send({ from: address, gas: gasAprrroved })
+        ?.then((e) => {
           setisapproved(true);
           toast.success('Approved success');
         })
@@ -130,7 +131,7 @@ const SwapPage: NextPageWithLayout = (props) => {
           toast.error(e.message);
         });
     }
-    const gasPrice = await web3.eth.getGasPrice();
+    const gasPrice = await web3?.eth?.getGasPrice();
     const gas = await Routercontract?.methods
       ?.swapExactTokensForETH(
         (migmigeinput * 1000000000).toFixed(),
@@ -139,7 +140,7 @@ const SwapPage: NextPageWithLayout = (props) => {
         address,
         Math.floor(Date.now() / 1000) + 60 * 5
       )
-      .estimateGas({
+      ?.estimateGas({
         from: address,
       });
     if (isapproved) {
@@ -151,16 +152,16 @@ const SwapPage: NextPageWithLayout = (props) => {
           address,
           Math.floor(Date.now() / 1000) + 60 * 5
         )
-        .send({
+        ?.send({
           from: address,
           gas: gas,
           gasPrice: gasPrice,
           chainId: 56,
         })
-        .then((e) => {
+        ?.then((e) => {
           toast.success(e.message);
         })
-        .catch((e) => {
+        ?.catch((e) => {
           toast.error(e.message);
         });
     }
