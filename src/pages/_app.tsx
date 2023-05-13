@@ -15,9 +15,8 @@ import {
   w3mConnectors,
   w3mProvider,
 } from '@web3modal/ethereum';
-import { Web3Modal } from '@web3modal/react';
+import { Web3Button, Web3Modal } from '@web3modal/react';
 import { configureChains, createClient, WagmiConfig } from 'wagmi';
-import { Web3Button } from '@web3modal/react';
 import { ToastContainer, toast } from 'react-toastify';
 import { bsc } from 'wagmi/chains';
 import 'react-toastify/dist/ReactToastify.css';
@@ -69,6 +68,7 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
         <title>MigMig</title>
         <link rel="icon" href={'/logo.png'} />
       </Head>
+
       <QueryClientProvider client={queryClient}>
         <ThemeProvider
           attribute="class"
@@ -77,7 +77,9 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
         >
           <WagmiConfig client={wagmiClient}>
             {/* <div className={`${firaCode.variable} font-body`}> */}
-            {getLayout(<Component {...pageProps} />)}
+            {getLayout(
+              <Component ethereumClient={ethereumClient} {...pageProps} />
+            )}
             <SettingsButton />
             <SettingsDrawer />
             <ModalsContainer />

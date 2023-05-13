@@ -13,7 +13,6 @@ import { useBreakpoint } from '@/lib/hooks/use-breakpoint';
 import { useIsMounted } from '@/lib/hooks/use-is-mounted';
 import { fadeInBottom } from '@/lib/framer-motion/fade-in-bottom';
 // dynamic import
-import { Web3Button } from '@web3modal/react';
 
 const Listbox = dynamic(() => import('@/components/ui/list-box'));
 
