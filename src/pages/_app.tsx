@@ -15,8 +15,8 @@ import {
   w3mConnectors,
   w3mProvider,
 } from '@web3modal/ethereum';
-import { Web3Button, Web3Modal } from '@web3modal/react';
-import { configureChains, createClient, WagmiConfig } from 'wagmi';
+import { Web3Modal } from '@web3modal/react';
+import { configureChains, createConfig, WagmiConfig } from 'wagmi';
 import { ToastContainer, toast } from 'react-toastify';
 import { bsc } from 'wagmi/chains';
 import 'react-toastify/dist/ReactToastify.css';
@@ -45,17 +45,19 @@ type AppPropsWithLayout = AppProps & {
 function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
   //could remove this if you don't need to page level layout
   const getLayout = Component.getLayout ?? ((page) => page);
-  const projectId = '2394c0eb2a66dd5e1eb4990b22d6502a';
   const [queryClient] = useState(() => new QueryClient());
+  const projectId = '2394c0eb2a66dd5e1eb4990b22d6502a';
   const chains = [bsc];
 
-  const { provider } = configureChains(chains, [w3mProvider({ projectId })]);
-  const wagmiClient = createClient({
+  const { publicClient } = configureChains(chains, [
+    w3mProvider({ projectId }),
+  ]);
+  const wagmiConfig = createConfig({
     autoConnect: true,
-    connectors: w3mConnectors({ projectId, version: 1, chains }),
-    provider,
+    connectors: w3mConnectors({ version: 1, chains, projectId }),
+    publicClient,
   });
-  const ethereumClient = new EthereumClient(wagmiClient, chains);
+  const ethereumClient = new EthereumClient(wagmiConfig, chains);
 
   return (
     <>
@@ -75,7 +77,7 @@ function CustomApp({ Component, pageProps }: AppPropsWithLayout) {
           enableSystem={false}
           defaultTheme="light"
         >
-          <WagmiConfig client={wagmiClient}>
+          <WagmiConfig config={wagmiConfig}>
             {/* <div className={`${firaCode.variable} font-body`}> */}
             {getLayout(
               <Component ethereumClient={ethereumClient} {...pageProps} />
